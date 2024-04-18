@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    types: [ opened ]
 
 jobs:
   build:
@@ -22,7 +22,18 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
-    - name: Semantic release
-      uses: dawidd6/action-semantic-release@v3
+    - name: Auto Increment Semver Action
+      uses: MCKanpolat/auto-semver-action@v2
+      id: versioning
       with:
+        releaseType: patch 
+        incrementPerCommit: false
         github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Run Changelog CI
+      uses: saadmk11/changelog-ci@v1.1.2
+
+    - name: Publish to GitHub Packages Apache Maven
+      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
