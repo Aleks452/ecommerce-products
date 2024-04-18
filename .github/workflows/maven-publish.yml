@@ -32,11 +32,6 @@ jobs:
         incrementPerCommit: false
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Run Changelog CI
-      uses: saadmk11/changelog-ci@v1.1.2
-      with:
-        release_version: ${{ steps.versioning.outputs.new_version }}
-
     - name: Publish to GitHub Packages Apache Maven
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
