@@ -12,6 +12,8 @@ import com.products.products.entities.ProductEntity;
 @Repository
 public interface ProductRepository extends PagingAndSortingRepository<ProductEntity, Integer> {
 	
+	// Queries to get data
+	
 	@Query("SELECT new com.products.products.dtos.ProductsDTO(a.productId, a.productName, a.productDescription, a.productPrice, a.productQuantity, a.productImage) "
 			+ "FROM ProductEntity a INNER JOIN CategoriesEntity b ON a.categoryId = b.categoryId "
 			+ " WHERE a.categoryId = :categoryId ORDER BY a.productId")
