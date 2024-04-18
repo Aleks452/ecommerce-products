@@ -3,6 +3,7 @@ package com.products.products.entities;
 import java.io.Serializable;
 
 import com.products.products.validations.FirstValidation;
+import com.products.products.validations.SecondValidation;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,6 +28,8 @@ public class ProductEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Positive(groups = {SecondValidation.class})
+	@NotNull(groups = {SecondValidation.class})
 	@Column(name = "id")
 	private int productId;
 	
@@ -38,15 +41,17 @@ public class ProductEntity implements Serializable {
 	@Column(name = "category_id")
 	private int categoryId;
 	
-	@Column(name = "product_category")
-	private String productCategory;
 	
 	@Column(name = "product_description")
 	private String productDescription;
 	
+	@Positive(groups = {SecondValidation.class})
+	@NotNull(groups = {SecondValidation.class})
 	@Column(name = "product_price")
-	private Double productPrice;
+	private double productPrice;
 	
+	@Positive(groups = {SecondValidation.class})
+	@NotNull(groups = {SecondValidation.class})
 	@Column(name = "product_quantity")
 	private int productQuantity;
 	
