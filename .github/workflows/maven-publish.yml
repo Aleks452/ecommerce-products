@@ -32,6 +32,13 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
+    - name: Auto Increment Semver Action
+      uses: MCKanpolat/auto-semver-action@v2
+      id: versioning
+      with:
+        releaseType: patch 
+        incrementPerCommit: false
+        github_token: ${{ secrets.GITHUB_TOKEN }}
     - run: mvn --batch-mode --update-snapshots verify
     - run: mkdir staging && cp target/*.jar staging
     - uses: actions/upload-artifact@v3
