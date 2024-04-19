@@ -52,6 +52,11 @@ public class ProductEntity implements Serializable {
 	
 	@Positive(groups = {SecondValidation.class})
 	@NotNull(groups = {SecondValidation.class})
+	@Column(name = "taxes_id")
+	private int taxesId;
+	
+	@Positive(groups = {SecondValidation.class})
+	@NotNull(groups = {SecondValidation.class})
 	@Column(name = "product_quantity")
 	private int productQuantity;
 	

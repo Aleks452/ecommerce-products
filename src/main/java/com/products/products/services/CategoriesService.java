@@ -1,4 +1,4 @@
-package com.products.products.Services;
+package com.products.products.services;
 
 import java.util.Comparator;
 import java.util.List;
@@ -29,7 +29,7 @@ public class CategoriesService {
 			List<CategoriesEntity> categories = categoriesRepository.findAll();
 
 			if (categories.isEmpty()) {
-				throw new CriteriaIssuesException("{\"message\": \"" + Constants.INFO_FOUND + "\",\"code\": \"INFO_FOUND\"}");
+				throw new CriteriaIssuesException("{\"message\": \"" + Constants.INFO_NOT_FOUND + "\",\"code\": \"INFO_FOUND\"}");
 			}
 
 			categories.sort(Comparator.comparing(CategoriesEntity::getProductCategory));

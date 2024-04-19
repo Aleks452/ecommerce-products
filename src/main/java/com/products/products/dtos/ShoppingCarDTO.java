@@ -14,7 +14,8 @@ public class ShoppingCarDTO {
 	private int userId;
 	private int productId;
 	private String productName;
-	private Long productQuantity;
 	private double productPrice;
+	private Long totalQuantity;
+	private double totalPrice;
 	
 }

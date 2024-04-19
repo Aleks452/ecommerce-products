@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.products.products.Services.CategoriesService;
 import com.products.products.entities.CategoriesEntity;
+import com.products.products.services.CategoriesService;
 
 
 @RestController

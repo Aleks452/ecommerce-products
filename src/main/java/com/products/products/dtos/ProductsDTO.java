@@ -16,5 +16,6 @@ public class ProductsDTO {
 	private String productDescription;
 	private double productPrice;
 	private int productQuantity;
+	private int taxesId;
 	private String productImage;
 }

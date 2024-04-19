@@ -12,6 +12,7 @@ import lombok.Setter;
 public class ShoppingCarTotalsDTO {
 	
 	private int userId;
-	private Long totalQuantity;
+	private double subtotalPrice;
+	private double totalTaxes;
 	private double totalPrice;
 }

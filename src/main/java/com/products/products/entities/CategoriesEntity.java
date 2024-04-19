@@ -1,5 +1,7 @@
 package com.products.products.entities;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -9,8 +11,10 @@ import lombok.Data;
 @Data
 @Table(name = "CATEGORIES")
 @Entity
-public class CategoriesEntity {
+public class CategoriesEntity implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "category_id")	
 	private Integer categoryId;

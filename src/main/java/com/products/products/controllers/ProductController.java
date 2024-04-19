@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.products.products.Services.ProductService;
 import com.products.products.dtos.PaginationDTO;
 import com.products.products.dtos.ProductsDTO;
 import com.products.products.entities.ProductEntity;
+import com.products.products.services.ProductService;
 import com.products.products.utils.Constants;
 import com.products.products.validations.FirstValidation;
 import com.products.products.validations.PaginationValidation;
@@ -40,6 +40,12 @@ public class ProductController {
 	@PostMapping("/add-products")
 	public ResponseEntity<String> addProducts(@Validated({SecondValidation.class}) @RequestBody ProductEntity productEntity) {
 	    productService.addProducts(productEntity);
+	    return ResponseEntity.status(HttpStatus.CREATED).body("{\"message\": \"" + Constants.CREATED + "\",\"code\": \"CREATED\"}");
+	}
+	
+	@PostMapping("/modify-products")
+	public ResponseEntity<String> modifyProducts(@Validated({SecondValidation.class}) @RequestBody ProductEntity productEntity) {
+	    productService.modifyProducts(productEntity);
 	    return ResponseEntity.status(HttpStatus.CREATED).body("{\"message\": \"" + Constants.CREATED + "\",\"code\": \"CREATED\"}");
 	}
 }

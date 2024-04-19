@@ -14,12 +14,12 @@ public interface ProductRepository extends PagingAndSortingRepository<ProductEnt
 	
 	// Queries to get data
 	
-	@Query("SELECT new com.products.products.dtos.ProductsDTO(a.productId, a.productName, a.productDescription, a.productPrice, a.productQuantity, a.productImage) "
+	@Query("SELECT new com.products.products.dtos.ProductsDTO(a.productId, a.productName, a.productDescription, a.productPrice, a.productQuantity, a.taxesId, a.productImage) "
 			+ "FROM ProductEntity a INNER JOIN CategoriesEntity b ON a.categoryId = b.categoryId "
 			+ " WHERE a.categoryId = :categoryId ORDER BY a.productId")
 	Page<ProductsDTO> findProductsByCategoryId(int categoryId, Pageable pageable);
 	
-	@Query("SELECT new com.products.products.dtos.ProductsDTO(a.productId, a.productName, a.productDescription, a.productPrice, a.productQuantity, a.productImage) "
+	@Query("SELECT new com.products.products.dtos.ProductsDTO(a.productId, a.productName, a.productDescription, a.productPrice, a.productQuantity, a.taxesId, a.productImage) "
 			+ "FROM ProductEntity a INNER JOIN CategoriesEntity b ON a.categoryId = b.categoryId ORDER BY a.productId")
 	Page<ProductsDTO> findAllProducts(Pageable pageable);
 }

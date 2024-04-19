@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.products.products.validations.FirstValidation;
+import com.products.products.validations.SecondValidation;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,7 +23,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "SHOPPING_CART")
+@Table(name = "SHOPPING_CAR")
 @Entity
 public class ShoppingCartEntity implements Serializable {
 	
@@ -33,11 +34,13 @@ public class ShoppingCartEntity implements Serializable {
 	@Column(name = "shopping_id")
 	private int shoppingId;
 	
-	@Positive(groups = {FirstValidation.class})
-	@NotNull(groups = {FirstValidation.class})
+	@Positive(groups = {FirstValidation.class, SecondValidation.class})
+	@NotNull(groups = {FirstValidation.class, SecondValidation.class})
 	@Column(name = "user_id")
 	private int userId;
 	
+	@Positive(groups = {SecondValidation.class})
+	@NotNull(groups = {SecondValidation.class})
 	@Column(name = "product_id")
 	private int productId;
 	
@@ -46,6 +49,14 @@ public class ShoppingCartEntity implements Serializable {
 	
 	@Column(name = "product_price")
 	private Double productPrice;
+	
+	@Column(name = "product_taxes")
+	private Double productTaxes;
+	
+	@Positive(groups = {FirstValidation.class})
+	@NotNull(groups = {FirstValidation.class})
+	@Column(name = "status_id")
+	private int statusId;
 	
 	@Column(name = "created_at")
 	private Date createdAt;
